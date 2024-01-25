@@ -1,0 +1,20 @@
+services:
+  mysql:
+    image: mysql
+    env_file:
+      - .env
+    ports: 
+      - '3306:3300'
+
+  api:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      target: development
+    command: npm run start:dev
+    ports:
+      - '3000:3000'
+    env_file:
+      - ./.env
+    volumes:
+      - .:/usr/src/app
