@@ -4,7 +4,7 @@ services:
     env_file:
       - .env
     ports: 
-      - '3306:3300'
+      - '3306:3306'
 
   api:
     build:
@@ -18,3 +18,5 @@ services:
       - ./.env
     volumes:
       - .:/usr/src/app
+    depends_on:
+      - mysql
